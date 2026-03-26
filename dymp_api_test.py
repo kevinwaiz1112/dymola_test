@@ -9,7 +9,7 @@ from ebcpy import DymolaAPI, TimeSeriesData
 def main(
     base_dir=None,
     aixlib_mo=None,
-    model_name="AixLib.Fluid.Examples.GeothermalHeatPump",
+    model_name="AixLib.Examples.SimpleHouse",
     with_plot=True,
     n_cpu=1,
 ):

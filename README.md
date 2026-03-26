@@ -21,59 +21,79 @@ Dieses Paket ist ein **Minimalbeispiel**, um ein Lizenz-/Feature-Problem mit **D
 
 ---
 
-## Windows: Setup & Run (Copy & Paste)
+## Windows: Setup & Run 
 
 ### 1) Ordner vorbereiten
 Entpacke das ZIP/den Ordner z. B. nach:
 `C:\03_Repos\dymola_test`
 
-Prüfe, dass AixLib vorhanden ist:
-```powershell
-Test-Path .\external\AixLib\AixLib\package.mo
-
-Wenn False, dann liegt AixLib nicht im richtigen Pfad.
-
-2) Virtuelle Umgebung erstellen & Abhängigkeiten installieren
+### 2) Virtuelle Umgebung erstellen & Abhängigkeiten installieren
 cd C:\03_Repos\dymola_test
+
 python -m venv .venv
+
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
+
 .\.venv\Scripts\python.exe -m pip install -r requirements.in
-3) Testlauf starten
+### 3) Testlauf starten
 cd C:\03_Repos\dymola_test
+
 .\.venv\Scripts\python.exe dymp_api_test.py
-Erwartete Outputs (Windows)
 
-Nach einem erfolgreichen Lauf findet ihr typischerweise:
-
+### Erwartete Outputs (Windows)
 results\resultFile.mat
+
 results\result.csv
+
 results\DymolaAPI.log
+
 Hinweis zur Lizenz (Windows)
 
-Auf Windows kann die Lizenz über die Dymola-GUI unter License Setup hinterlegt sein (persistente Konfiguration). Dann müssen keine Lizenz-Environment-Variablen gesetzt werden.
+Auf Windows ist die Lizenz über die Dymola-GUI unter License Setup hinterlegt (persistente Konfiguration). 
+Dann müssen keine Lizenz-Environment-Variablen gesetzt werden.
 
-Linux: Setup & Run (Copy & Paste)
-1) Ordner vorbereiten
+## Linux (Remote): Setup & Run 
 
-Entpacke das ZIP/den Ordner z. B. nach:
-~/dymola_test
+### 1) Alte Ordner entfernen + frisch klonen (inkl. AixLib Submodule)
 
-Prüfe, dass AixLib vorhanden ist:
+cd ~
 
-test -f ./external/AixLib/AixLib/package.mo && echo "OK" || echo "MISSING"
-2) Virtuelle Umgebung erstellen & Abhängigkeiten installieren
-cd ~/dymola_test
+rm -rf dymola_test
+
+cd dymola_test
+
+### 2) Python venv erstellen + Abhängigkeiten installieren
+
 python3 -m venv .venv
+
 source .venv/bin/activate
+
 python -m pip install --upgrade pip
+
 pip install -r requirements.in
-3) Runner ausführbar machen & starten
-cd ~/dymola_test
+
+### 3) Run starten
 chmod +x run_remote.sh
+
 ./run_remote.sh
-Erwartete Outputs (Linux)
-Bei erfolgreichem Lauf (je nach Lizenz):
-results/resultFile.mat, results/result.csv, results/DymolaAPI.log
-Bei Lizenzproblem: Log-Ausgaben enthalten i. d. R. die Meldungen:
-8 or less equations
-model is too complex for the current license
+
+### Erwartetes Verhalten / typische Ausgabe (Linux)
+
+Auf Linux erscheint bei uns reproduzierbar die Lizenz-Warnung (Feature-/Seat-Limit):
+
+UserWarning: You have no licence to use Dymola. Hence you can only simulate models with 8 or less equations.
+
+Beispiel-Run (Auszug):
+
+26.03.2026-15:25:05 INFO DymolaAPI: -------------------------Initializing class DymolaAPI-------------------------
+
+26.03.2026-15:25:05 INFO DymolaAPI: Using dymola installation at /opt/dymola-2026x-x86_64
+
+26.03.2026-15:25:05 INFO DymolaAPI: Using dymola.exe: /opt/dymola-2026x-x86_64/bin64/dymola
+
+26.03.2026-15:25:07 INFO DymolaAPI: Loading Model /home/waiz_kv/dymola_test/dymola_test/external/AixLib/AixLib
+
+/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py:311: 
+
+UserWarning: You have no licence to use Dymola. Hence you can only simulate models with 8 or less equations.
+
