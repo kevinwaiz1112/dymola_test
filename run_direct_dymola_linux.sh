@@ -25,4 +25,10 @@ fi
 cd "$SCRIPT_DIR"
 mkdir -p results
 
+echo "[1] Starte Dymola headless..."
+echo "[2] Arbeitsordner: $SCRIPT_DIR"
+echo "[3] MOS: $SCRIPT_DIR/simulate_example.mos"
+
 "$DYMOLA_EXE" /nowindow "$SCRIPT_DIR/simulate_example.mos"
+
+echo "[4] Dymola beendet."
