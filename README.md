@@ -77,7 +77,9 @@ chmod +x run_remote.sh
 
 ./run_remote.sh
 
-### Erwartetes Verhalten / typische Ausgabe (Linux)
+### Erwartetes Verhalten / typische Ausgabe (Linux) 
+
+(Das einfache Modell AixLib.Fluid.Examples.GeothermalHeatPump.GeothermalHeatPump.mo läuft jedoch)
 
 Auf Linux erscheint bei uns reproduzierbar die Lizenz-Warnung (Feature-/Seat-Limit):
 
@@ -85,15 +87,58 @@ UserWarning: You have no licence to use Dymola. Hence you can only simulate mode
 
 Beispiel-Run (Auszug):
 
-26.03.2026-15:25:05 INFO DymolaAPI: -------------------------Initializing class DymolaAPI-------------------------
+26.03.2026-15:44:22 INFO DymolaAPI: -------------------------Initializing class DymolaAPI-------------------------
 
-26.03.2026-15:25:05 INFO DymolaAPI: Using dymola installation at /opt/dymola-2026x-x86_64
+26.03.2026-15:44:22 INFO DymolaAPI: Using dymola installation at /opt/dymola-2026x-x86_64
 
-26.03.2026-15:25:05 INFO DymolaAPI: Using dymola.exe: /opt/dymola-2026x-x86_64/bin64/dymola
+26.03.2026-15:44:22 INFO DymolaAPI: Using dymola.exe: /opt/dymola-2026x-x86_64/bin64/dymola
 
-26.03.2026-15:25:07 INFO DymolaAPI: Loading Model /home/waiz_kv/dymola_test/dymola_test/external/AixLib/AixLib
+26.03.2026-15:44:22 INFO DymolaAPI: Using dymola interface: /opt/dymola-2026x-x86_64/Modelica/Library/python_interface/dymola-2026.0-py3-none-any.whl
 
-/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py:311: 
+26.03.2026-15:44:23 INFO DymolaAPI: Loading Model /home/waiz_kv/dymola_test/dymola_test/external/AixLib/AixLib
 
-UserWarning: You have no licence to use Dymola. Hence you can only simulate models with 8 or less equations.
+26.03.2026-15:44:26 INFO DymolaAPI: Loaded modules
+
+/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py:311: UserWarning: You have no licence to use Dymola. Hence you can only simulate models with 8 or less equations.
+  warnings.warn("You have no licence to use Dymola. "
+
+26.03.2026-15:44:26 INFO DymolaAPI: Translating model 'AixLib.Examples.SimpleHouse' to extract model variables
+
+26.03.2026-15:44:34 ERROR DymolaAPI: Translation failed!
+
+26.03.2026-15:44:34 ERROR DymolaAPI: The last error log from Dymola:
+
+26.03.2026-15:44:35 ERROR DymolaAPI: Translation of <a href="Modelica://AixLib.Examples.SimpleHouse">AixLib.Examples.SimpleHouse</a>
+
+-------------------------------------------------
+
+Error: the model is too complex for the current license.
+
+Your license must be upgraded to handle this model.
+
+-------------------------------------------------
+
+Error: ERRORS have been issued.
+
+Instantiation of
+
+Traceback (most recent call last):
+  File "/home/waiz_kv/dymola_test/dymola_test/dymp_api_test.py", line 109, in <module>
+    main(
+  File "/home/waiz_kv/dymola_test/dymola_test/dymp_api_test.py", line 52, in main
+    dym_api = DymolaAPI(
+  File "/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py", line 318, in __init__
+    self._update_model()
+  File "/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py", line 334, in _update_model
+    self.extract_model_variables()
+  File "/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py", line 858, in extract_model_variables
+    self.translate()
+  File "/home/waiz_kv/dymola_test/dymola_test/.venv/lib/python3.10/site-packages/ebcpy/simulationapi/dymola_api.py", line 718, in translate
+    raise Exception("Translation failed - Aborting")
+
+Exception: Translation failed - Aborting
+
+26.03.2026-15:44:35 INFO DymolaAPI: Closing Dymola
+
+26.03.2026-15:44:38 INFO DymolaAPI: Successfully close d Dymola
 

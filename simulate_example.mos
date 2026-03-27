@@ -1,0 +1,16 @@
+clearlog();
+cd(".");
+
+openModel("external/AixLib/AixLib/package.mo");
+
+checkModel(AixLib.Examples.SimpleHouse);
+
+simulateModel(
+  "AixLib.Examples.SimpleHouse",
+  startTime=0,
+  stopTime=3600,
+  outputInterval=100
+);
+
+// Optional: Versuch, CSV-nahe Nachvollziehbarkeit zu verbessern
+savelog("results/dymola_run.log");
