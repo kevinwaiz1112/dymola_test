@@ -10,6 +10,8 @@ Dieses Paket ist ein **Minimalbeispiel**, um ein Lizenz-/Feature-Problem mit **D
 
 ---
 
+Wichtig: Der Remote-Linux Rechner hat keine GUI sondern bei mir nur ein Terminal
+
 ## Inhalt / Struktur
 
 - `external/AixLib/` → AixLib als **mitgelieferter Ordner** (kein Git-Submodule).  

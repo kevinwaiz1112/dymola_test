@@ -59,6 +59,22 @@ def main(
         n_restart=-1,
     )
 
+    # Lizenzinfo aus der zugrunde liegenden Dymola-Schnittstelle holen
+    for attr_name in ["dymola", "_dymola"]:
+        obj = getattr(dym_api, attr_name, None)
+        if obj is not None and hasattr(obj, "DymolaLicenseInfo"):
+            print(f"Using Dymola interface via attribute: {attr_name}")
+            try:
+                lic_info = obj.DymolaLicenseInfo()
+                print("DymolaLicenseInfo():", lic_info)
+            except Exception as exc:
+                print(f"DymolaLicenseInfo failed via {attr_name}: {exc}")
+            break
+    else:
+        print("No direct Dymola interface with DymolaLicenseInfo() found on DymolaAPI.")
+        print("Available DymolaAPI attributes:")
+        print([name for name in dir(dym_api) if "dym" in name.lower()])
+
     dym_api.set_sim_setup({
         "start_time": 0,
         "stop_time": 3600,
