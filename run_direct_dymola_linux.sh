@@ -14,11 +14,11 @@ export DYMOLA_USERHOME="$HOME/.dassaultsystemes/dymola/2026x"
 export TMPDIR="$HOME/tmp"
 mkdir -p "$DYMOLA_USERHOME" "$TMPDIR"
 
-DYMOLA_EXE="$D/bin64/dymola"
+DYMOLA_EXE="$D/bin64/dymola.sh"
 MOS_FILE="$SCRIPT_DIR/simulate_example.mos"
 
 if [ ! -x "$DYMOLA_EXE" ]; then
-  echo "Dymola nicht gefunden oder nicht ausfuehrbar:"
+  echo "Dymola-Launcher nicht gefunden oder nicht ausfuehrbar:"
   echo "$DYMOLA_EXE"
   exit 1
 fi
