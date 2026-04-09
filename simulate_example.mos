@@ -1,7 +1,7 @@
 clearlog();
 cd(".");
 openModel("external/AixLib/AixLib/package.mo");
-checkModel(AixLib.Examples.SimpleHouse);
-simulateModel("AixLib.Examples.SimpleHouse", startTime=0, stopTime=3600, outputInterval=100);
-savelog("results/dymola_run.log");
+DymolaLicenseInfo();
+translateModel("AixLib.Examples.SimpleHouse");
+savelog("/home/waiz_kv/dymola_test/dymola_test/results/dymola_run.log");
 exit();
