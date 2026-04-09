@@ -1,7 +1,3 @@
 clearlog();
-cd(".");
-openModel("external/AixLib/AixLib/package.mo");
 DymolaLicenseInfo();
-translateModel("AixLib.Examples.SimpleHouse");
-savelog("/home/waiz_kv/dymola_test/dymola_test/results/dymola_run.log");
 exit();
