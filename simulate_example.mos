@@ -1,3 +1,4 @@
 clearlog();
 DymolaLicenseInfo();
+savelog("/home/waiz_kv/dymola_test/dymola_test/results/dymola_run.log");
 exit();
